@@ -51,6 +51,16 @@ if ( ! defined( 'ABSPATH' ) ) {
             </div>
         </div>
 
+        <div class="snootl-card">
+            <div class="snootl-field">
+                <label class="snootl-checkbox-label" for="show_in_admin">
+                    <input type="checkbox" id="show_in_admin" name="snootl_options[show_in_admin]" value="1" <?php checked( ! empty( $options['show_in_admin'] ) ); ?> />
+                    Show Snootl widget in WordPress admin
+                </label>
+                <p class="snootl-description">Enable this to load the Snootl widget inside wp-admin for logged-in users with dashboard access.</p>
+            </div>
+        </div>
+
         <div class="snootl-footer">
             <div>
                 <a href="https://snootl.com" target="_blank">snootl.com</a> &bull; 

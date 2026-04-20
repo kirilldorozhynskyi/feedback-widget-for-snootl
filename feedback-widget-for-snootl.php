@@ -3,7 +3,7 @@
  * Plugin Name: Feedback Widget for Snootl
  * Plugin URI: https://snootl.com/
  * Description: Integrates Snootl widget script with premium visibility controls.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Tested up to: 6.9
  * Author: justDev
  * Author URI: https://justdev.org

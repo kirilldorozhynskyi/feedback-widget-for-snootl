@@ -5,7 +5,7 @@ Tags: feedback, widget, support, customer feedback, helpdesk
 Requires at least: 5.0
 Requires PHP: 7.2
 Tested up to: 6.9
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,6 +63,11 @@ Privacy Policy: https://snootl.com/privacy-policy/
 1. Snootl settings page.
 
 == Changelog ==
+
+= 1.1.0 =
+* Added an option to show the Feedback Widget for Snootl inside the WordPress admin.
+* The admin widget uses the same API key as the frontend widget.
+* Updated asset versions for the minor release.
 
 = 1.0.0 =
 * Initial release

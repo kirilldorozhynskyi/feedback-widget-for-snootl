@@ -26,14 +26,14 @@ class Settings {
             'snootl-admin-css', 
             plugin_dir_url( dirname( dirname( __FILE__ ) ) ) . 'assets/css/admin.css', 
             array(), 
-            '1.0.0' 
+            '1.1.0'
         );
         
 		wp_enqueue_script( 
             'snootl-admin-js', 
             plugin_dir_url( dirname( dirname( __FILE__ ) ) ) . 'assets/js/admin.js', 
             array( 'jquery' ), 
-            '1.0.0', 
+            '1.1.0',
             true 
         );
 
@@ -71,6 +71,7 @@ class Settings {
 		$new_input['api_key'] = isset( $input['api_key'] ) ? sanitize_text_field( $input['api_key'] ) : '';
 		$new_input['visibility_mode'] = isset( $input['visibility_mode'] ) ? sanitize_text_field( $input['visibility_mode'] ) : 'everyone';
 		$new_input['min_role'] = isset( $input['min_role'] ) ? sanitize_text_field( $input['min_role'] ) : 'subscriber';
+		$new_input['show_in_admin'] = ! empty( $input['show_in_admin'] ) ? 1 : 0;
 
 		return $new_input;
 	}

@@ -23,6 +23,7 @@ class Widget {
 
 	public function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_widget_script' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_widget_script' ) );
 		add_filter( 'script_loader_tag', array( $this, 'add_script_attributes' ), 10, 3 );
 	}
 
@@ -71,6 +72,20 @@ class Widget {
 	}
 
 	/**
+	 * Decide whether to show the widget in wp-admin.
+	 */
+	private function should_show_admin_widget() {
+		$options = get_option( 'snootl_options' );
+		$api_key = isset( $options['api_key'] ) ? $options['api_key'] : '';
+
+		if ( empty( $api_key ) ) {
+			return false;
+		}
+
+		return ! empty( $options['show_in_admin'] );
+	}
+
+	/**
 	 * Enqueue the Snootl script properly
 	 */
 	public function enqueue_widget_script() {
@@ -79,8 +94,23 @@ class Widget {
 				'snootl-widget', 
 				'https://cdn.snootl.com/scripts/widget/snootl-widget.esm.js', 
 				array(), 
-				'1.0.0', 
+				'1.1.0',
 				false 
+			);
+		}
+	}
+
+	/**
+	 * Enqueue the Snootl script in wp-admin when enabled.
+	 */
+	public function enqueue_admin_widget_script( $hook = '' ) {
+		if ( $this->should_show_admin_widget() ) {
+			wp_enqueue_script(
+				'snootl-widget',
+				'https://cdn.snootl.com/scripts/widget/snootl-widget.esm.js',
+				array(),
+				'1.1.0',
+				false
 			);
 		}
 	}
