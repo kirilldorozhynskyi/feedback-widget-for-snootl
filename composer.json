@@ -1,0 +1,28 @@
+{
+	"name": "justdev/snootl-widget",
+	"description": "Integrates Snootl widget script with premium visibility controls.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "justDev",
+			"homepage": "https://justdev.org"
+		}
+	],
+	"homepage": "https://snootl.com/",
+	"autoload": {
+		"psr-4": {
+			"Snootl\\": "src/"
+		}
+	},
+	"config": {
+		"optimize-autoloader": true,
+		"classmap-authoritative": true
+	},
+	"scripts": {
+		"post-autoload-dump": [
+			"sed -i '' \"/InstalledVersions.php/d\" vendor/composer/autoload_static.php"
+		]
+	},
+	"require": {}
+}

@@ -1,0 +1,112 @@
+#snootl-admin-wrap {
+    max-width: 800px;
+    margin: 30px auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+.snootl-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    padding: 30px;
+    margin-bottom: 20px;
+    border: 1px solid #eef1f5;
+}
+.snootl-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.snootl-header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1d2327;
+}
+.snootl-badge {
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.snootl-field {
+    margin-bottom: 25px;
+}
+.snootl-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #3c434a;
+}
+.snootl-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.snootl-input:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    outline: none;
+}
+.snootl-select {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+}
+.snootl-description {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.5;
+}
+.snootl-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #eef1f5;
+}
+.snootl-footer a {
+    color: #6366f1;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+.snootl-footer a:hover {
+    color: #4f46e5;
+}
+.snootl-save-btn {
+    background: #1d2327;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.snootl-save-btn:hover {
+    background: #000;
+}
+/* Conditional Fields */
+#role_level_container {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
