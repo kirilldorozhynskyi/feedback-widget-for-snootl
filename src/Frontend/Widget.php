@@ -22,9 +22,8 @@ class Widget {
 	);
 
 	public function __construct() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_widget_script' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_widget_script' ) );
-		add_filter( 'script_loader_tag', array( $this, 'add_script_attributes' ), 10, 3 );
+		add_action( 'wp_head', array( $this, 'print_widget_script' ), 0 );
+		add_action( 'admin_head', array( $this, 'print_admin_widget_script' ), 0 );
 	}
 
 	/**
@@ -86,49 +85,34 @@ class Widget {
 	}
 
 	/**
-	 * Enqueue the Snootl script properly
+	 * Print the Snootl script at the beginning of the head.
 	 */
-	public function enqueue_widget_script() {
+	public function print_widget_script() {
 		if ( $this->should_show_widget() ) {
-			wp_enqueue_script( 
-				'snootl-widget', 
-				'https://cdn.snootl.com/scripts/widget/snootl-widget.esm.js', 
-				array(), 
-				'1.1.0',
-				false 
-			);
+			$this->print_script_tag();
 		}
 	}
 
 	/**
-	 * Enqueue the Snootl script in wp-admin when enabled.
+	 * Print the Snootl script in wp-admin when enabled.
 	 */
-	public function enqueue_admin_widget_script( $hook = '' ) {
+	public function print_admin_widget_script() {
 		if ( $this->should_show_admin_widget() ) {
-			wp_enqueue_script(
-				'snootl-widget',
-				'https://cdn.snootl.com/scripts/widget/snootl-widget.esm.js',
-				array(),
-				'1.1.0',
-				false
-			);
+			$this->print_script_tag();
 		}
 	}
 
 	/**
-	 * Add module type and data-api-key to the script tag
+	 * Print the widget script tag.
 	 */
-	public function add_script_attributes( $tag, $handle, $src ) {
-		if ( 'snootl-widget' !== $handle ) {
-			return $tag;
-		}
-
+	private function print_script_tag() {
 		$options = get_option( 'snootl_options' );
 		$api_key = isset( $options['api_key'] ) ? $options['api_key'] : '';
 
-		// Add type="module" and data-api-key without rebuilding the whole tag string
-		$tag = str_replace( '<script ', '<script type="module" data-api-key="' . esc_attr( $api_key ) . '" ', $tag );
-
-		return $tag;
+		printf(
+			'<script type="module" src="%1$s" data-api-key="%2$s" data-feedback-source="plugin" data-snootl-load="interaction" fetchpriority="low"></script>' . "\n",
+			esc_url( 'https://cdn.snootl.com/scripts/widget/snootl-widget.esm.js?ver=1.1.0' ),
+			esc_attr( $api_key )
+		);
 	}
 }
